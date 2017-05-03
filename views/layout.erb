@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>COSMO Bereitschaften</title>
+    <style type="text/css" media="screen">
+      body, th, td, button {font-family: Avenir, Helvetica, Arial, sans-serif; margin: 0; padding: 0;}
+      table {border-collapse: collapse; }
+      table th { padding: 0.25rem 1rem; }
+      table td { padding: 0.25rem 2rem; }
+      table tr {border: 1px solid #333;}
+      table th {background: #333; color: #fff; text-align: center; font-size: 1.5rem; }
+      table th small { text-transform: uppercase; font-size: 0.6rem; display:block; font-weight:normal;}
+      table .wday-0,
+      table .wday-6 { background: #999; }
+      table .wday-0 th,
+      table .wday-6 th { background: #666;}
+      table .wday-0 th {color: #999;}
+      
+      header {
+        background: #000;
+        color: #fff;
+      }
+      
+      header, footer, main {
+        padding: 1rem;
+      }
+      
+      main {
+        border-bottom: 3px solid #000;
+        border-top: 3px solid #000;
+      }
+      dl {
+        display: inline-block;
+        min-width: 100px;
+      }
+      dl dt {
+        font-weight: bold;
+        display:inline;
+        margin-right: 1rem;
+      }
+      dl dd {
+        display: inline;
+        margin: 0;
+      }
+      dl dd:after{
+        display: block;
+        content: '';
+      }
+      a {
+        color: #f33;
+        text-decoration:none;
+        font-weight:bold;
+      }
+      a:hover {
+        color: #c00;
+      }
+      
+      button {
+        padding: 1rem 3rem;
+        margin: 2rem 0;
+        font-size: 1.25rem;
+        background-color: #fff;
+        border: 3px solid #f33;
+        color: #f33;
+        font-weight: bold;
+        letter-spacing: 1px;
+        transition: all 0.2s ease;
+      }
+      button:hover {
+        color: #fff;
+        background-color: #f33;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>COSMO Bereitschaften</h1>
+      <p>Deine Cosmo-Bereitschaften in deinem Internet-Kalender. Mit Benachrichtigungen einem Tag davor.</p>
+    </header>
+    
+    <main>
+      <%= yield %>
+    </main>
+    
+    <footer>
+      <dl>
+        <dt>Früh:</dt><dd>08:00 &ndash; 10:00 Uhr</dd>
+        <dt>Spät:</dt><dd>17:00 &ndash; 19:00 Uhr</dd>
+      </dl>
+    </footer>
+  </body>
+</html>

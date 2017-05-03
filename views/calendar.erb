@@ -1,0 +1,48 @@
+<h2>
+  <a href="<%= @month.prev.to_url %>">&larr;</a>
+  <%= @month.name %>
+  <a href="<%= @month.next.to_url %>">&rarr;</a>
+</h2>
+
+      
+<form method="post" action="<%= @month.to_url %>">
+
+  <table>
+    <% @month.days.each do |date| %>
+
+    <tr class="wday-<%= date.wday %>">
+
+      <th scope="row">
+        <small><%= date.strftime("%a") %></small>
+        <%= date.day %>
+      </th>
+      
+      <% if date.sunday? %>
+      
+      <td colspan="2">&nbsp;</td>
+      
+      <% else %>
+
+      <td>
+        <label>
+          <input type="checkbox" name="standby[<%=date.day%>][Early]" /> Früh
+        </label>
+      </td>
+      <td>
+        <label>
+          <input type="checkbox" name="standby[<%=date.day%>][Late]" /> Spät
+        </label>
+      </td>
+
+      <% end %>
+
+    </tr>  
+    <% end %>
+
+  </table>
+
+  <button type="submit">Kalender erstellen</button>
+
+</form>
+
+
