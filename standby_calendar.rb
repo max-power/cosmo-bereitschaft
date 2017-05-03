@@ -29,6 +29,9 @@ class StandbyCalendar < Roda
         r.redirect(@month.to_url) unless r['standby']
         
         calendar = Icalendar::Calendar.new
+        calendar.timezone do |t|
+          t.tzid = "Europe/Berlin"
+        end
         
         r['standby'].each do |day, values|
           date = Date.civil(@month.year, @month.month, Integer(day))
