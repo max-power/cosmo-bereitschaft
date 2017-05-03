@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 ruby "2.4.0"
 
-gem "thin"
+gem "puma"
 gem "roda"
+gem "tilt"
 gem "icalendar"

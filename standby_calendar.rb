@@ -4,8 +4,13 @@ require "icalendar"
 require "./models/month"
 require "./models/standby"
 
-class StandbyCalendarApp < Roda
+class StandbyCalendar < Roda
   plugin :render
+  plugin :not_found
+  
+  not_found do
+    "Oh, snap!"
+  end
   
   route do |r|
     r.root do
