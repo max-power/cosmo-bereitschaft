@@ -43,6 +43,7 @@ class StandbyCalendar < Roda
         end
       
         response['Content-Type'] = 'text/calendar'
+        response['Content-Disposition'] = "inline; filename=cosmo-bereitschaft-#{@month}"
         calendar.to_ical
 
       end
