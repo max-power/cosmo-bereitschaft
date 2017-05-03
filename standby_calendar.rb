@@ -1,6 +1,8 @@
 require "roda"
 require "date"
+require "tzinfo"
 require "icalendar"
+require "icalendar/tzinfo"
 require "./models/month"
 require "./models/standby"
 
@@ -29,15 +31,16 @@ class StandbyCalendar < Roda
         r.redirect(@month.to_url) unless r['standby']
         
         calendar = Icalendar::Calendar.new
-        calendar.timezone do |t|
-          t.tzid = "Europe/Berlin"
-        end
-        
+        tzid = "Europe/Berlin"
+        tz = TZInfo::Timezone.get tzid
+        timezone = tz.ical_timezone DateTime.now
+        calendar.add_timezone timezone
+                
         r['standby'].each do |day, values|
           date = Date.civil(@month.year, @month.month, Integer(day))
 
           values.each do |type, _|
-            standby = Standby.new(date, type: Standby.const_get(type))
+            standby = Standby.new(date, type: Standby.const_get(type), tzid: tzid)
             calendar.add_event(standby.ical_event)
           end
         end
