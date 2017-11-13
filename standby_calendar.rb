@@ -18,36 +18,33 @@ class StandbyCalendar < Roda
       r.redirect "/#{d.year}/#{d.month}"
     end
 
-    r.on ":year/:month" do |year, month|
+    r.on Integer, Integer do |year, month|
       @month = Month.new(year, month)
       
       r.get do
         view("calendar")
       end
-      
+
       r.post do
         r.redirect(@month.to_url) unless r['standby']
-        
+
         calendar = Icalendar::Calendar.new
-        calendar.timezone do |t|
-          t.tzid = "Europe/Berlin"
-        end
-        
-        r['standby'].each do |day, values|
-          date = Date.civil(@month.year, @month.month, Integer(day))
+        calendar.timezone.tzid = "Europe/Berlin"
+
+        r['standby'].each do |mday, values|
+          date = @month.day(mday)
 
           values.each do |type, _|
             standby = Standby.new(date, type: Standby.const_get(type))
             calendar.add_event(standby.ical_event)
           end
         end
-      
+
         response['Content-Type'] = 'text/calendar'
         response['Content-Disposition'] = "inline; filename=cosmo-bereitschaft-#{@month}"
         calendar.to_ical
 
       end
     end
-
   end
 end
