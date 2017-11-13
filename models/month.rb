@@ -45,7 +45,8 @@ class Month
   end
   
   def day(mday)
-    Date.new(year, month, mday.to_i.clamp(1, number_of_days))
+    d = mday.to_i.clamp(1, number_of_days)
+    Date.new(year, month, d)
   end
 
   alias_method :begin, :first_day

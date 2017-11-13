@@ -9,15 +9,22 @@
       body, th, td, button {font-family: Avenir, Helvetica, Arial, sans-serif; margin: 0; padding: 0;}
       table {border-collapse: collapse; }
       table th { padding: 0.25rem 1rem; }
-      table td { padding: 0.25rem 2rem; }
-      table tr {border: 1px solid #333;}
-      table th {background: #333; color: #fff; text-align: center; font-size: 1.5rem; }
+      table td { padding: 0}
+      table td label {
+        display:block;
+        padding: 1rem 2rem;
+      }
+      table tr { border: 1px solid rgba(0,0,0,0.1); }
+      table th { background: #333; color: #fff; text-align: center; font-size: 1.5rem; }
       table th small { text-transform: uppercase; font-size: 0.6rem; display:block; font-weight:normal;}
       table .wday-0,
-      table .wday-6 { background: #999; }
+      table .wday-6 { background: #ededed; }
       table .wday-0 th,
-      table .wday-6 th { background: #666;}
-      table .wday-0 th {color: #999;}
+      table .wday-6 th { background: #444;}
+      table .wday-0 th { color: #999;}
+      table td label {
+
+      }
       
       header {
         background: #000;
@@ -79,12 +86,24 @@
         background-color: #f33;
       }
       
+      
+      /* small device styles */
+      main {
+        padding: 1rem 0;
+      }
+      table {
+        width: 100%;
+      }
+      table tr {
+        border-left:0;
+        border-right: 0;
+      }
+      
     </style>
   </head>
   <body>
     <header>
       <h1>COSMO Bereitschaften</h1>
-      <p>Deine Cosmo-Bereitschaften in deinem Internet-Kalender. Mit Erinnerungen einen Tag davor.</p>
     </header>
     
     <main>
@@ -97,7 +116,7 @@
         <dt>Früh:</dt><dd>08:00 &ndash; 10:00 Uhr</dd>
         <dt>Spät:</dt><dd>17:00 &ndash; 19:00 Uhr</dd>
       </dl>
-      <h3>Sonnabends</h3>
+      <h3>Samstags</h3>
       <dl>
         <dt>Früh:</dt><dd>10:00 &ndash; 13:00 Uhr</dd>
         <dt>Spät:</dt><dd>13:00 &ndash; 16:00 Uhr</dd>
