@@ -6,44 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>COSMO Bereitschaften</title>
     <style type="text/css" media="screen">
-      body, th, td, button {font-family: Avenir, Helvetica, Arial, sans-serif; margin: 0; padding: 0;}
-      table {border-collapse: collapse; }
-      table th { padding: 0.25rem 1rem; }
-      table td { padding: 0}
+      body, th, td, button {
+        font-family: IBM Plex Sans, Source Pro Sans, "system-ui", Avenir, Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      a {
+        color: #f33;
+        text-decoration:none;
+      }
+      a:hover {
+        color: #c00;
+      }
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 300;   
+      }
+      h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+      h2 a {
+        display:inline-block;
+        padding: 0 3rem;
+        font-weight:normal;
+      }
+      
+      
+      header, footer, main {
+        text-align:center;
+      }
+      footer {
+        padding: 1rem;
+      }
+       
+      main {
+        background: #f0f0f0;
+        border: solid #333;
+        border-width: 3px 0;
+      }
+      
+      table {
+        background: #fff;
+        border-collapse: collapse;
+        border: solid #d0d0d0;
+        border-width: 2px 0;
+        width: 100%;
+        margin: 0 auto;
+      }
+      table tr {
+        border: solid #e0e0e0;
+        border-width: 1px 0;
+      }
+      table th { 
+        padding: 0.25rem 1rem;
+        font-size: 1.5rem;
+        text-align: center;
+      }
+      table th small {
+        display: block;
+        text-transform: uppercase;
+        font-size: 0.6rem;
+        font-weight: normal;
+      }
+      table td { 
+        padding: 0;
+        vertical-align:middle;
+      }
       table td label {
         display:block;
         padding: 1rem 2rem;
       }
-      table tr { border: 1px solid rgba(0,0,0,0.1); }
-      table th { background: #333; color: #fff; text-align: center; font-size: 1.5rem; }
-      table th small { text-transform: uppercase; font-size: 0.6rem; display:block; font-weight:normal;}
       table .wday-0,
-      table .wday-6 { background: #ededed; }
-      table .wday-0 th,
-      table .wday-6 th { background: #444;}
+      table .wday-6 { background: #f0f0f0; }
       table .wday-0 th { color: #999;}
-      table td label {
-
-      }
       
-      header {
-        background: #000;
-        color: #fff;
-      }
       
-      header, footer, main {
-        padding: 1rem;
-        text-align:center;
-      }
-      
-      main {
-        border-bottom: 3px solid #000;
-        border-top: 3px solid #000;
-        
-      }
-      main table {
-        margin: 0 auto;
-      }
       dl {
         display: inline-block;
         min-width: 100px;
@@ -61,14 +99,7 @@
         display: block;
         content: '';
       }
-      a {
-        color: #f33;
-        text-decoration:none;
-        font-weight:bold;
-      }
-      a:hover {
-        color: #c00;
-      }
+
       
       button {
         padding: 1rem 3rem;
@@ -86,19 +117,12 @@
         background-color: #f33;
       }
       
-      
-      /* small device styles */
-      main {
-        padding: 1rem 0;
+      @media (min-width: 30rem) {
+        table {
+          width: 30rem;
+          border-width: 2px;
+        }
       }
-      table {
-        width: 100%;
-      }
-      table tr {
-        border-left:0;
-        border-right: 0;
-      }
-      
     </style>
   </head>
   <body>
