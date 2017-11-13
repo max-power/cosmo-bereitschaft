@@ -7,11 +7,11 @@ require "./models/standby"
 class StandbyCalendar < Roda
   plugin :render
   plugin :not_found
-  
+
   not_found do
     "Oh, snap!"
   end
-  
+
   route do |r|
     r.root do
       d = Date.today

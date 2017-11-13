@@ -2,7 +2,7 @@ require 'date'
 
 class Month
   attr_reader :year, :month
-  
+
   def initialize(year, month)
     @year  = Integer(year)
     @month = Integer(month).clamp(1, 12)
@@ -27,23 +27,23 @@ class Month
   def last_day
     Date.new(year, month, -1)
   end
-  
+
   def to_s(sep='-')
     "#{year}#{sep}#{month}"
   end
-  
+
   def to_url
     "/#{to_s('/')}"
   end
-  
+
   def name
     "#{month_name} #{year}"
   end
-  
+
   def month_name
     Date::MONTHNAMES[month]
   end
-  
+
   def day(mday)
     d = mday.to_i.clamp(1, number_of_days)
     Date.new(year, month, d)
@@ -51,17 +51,17 @@ class Month
 
   alias_method :begin, :first_day
   alias_method :end,   :last_day
-  
+
   def next
     d = last_day + 1
     self.class.new(d.year, d.month)
   end
-  
+
   def prev
     d = first_day - 1
     self.class.new(d.year, d.month)
   end
-  
+
   def ==(other)
     year == other.year && month == other.month
   end

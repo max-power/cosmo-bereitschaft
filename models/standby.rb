@@ -8,17 +8,17 @@ class Standby
       end
     end
   end
-  
+
   Early = Type.new('Früh',  8..10, 10..13)
   Late  = Type.new('Spät', 17..19, 13..16)
-  
+
   attr_reader :date, :type
-  
+
   def initialize(date, type: Late)
     @date = date
     @type = type
   end
-  
+
   def ical_event
     e = Icalendar::Event.new
     e.summary = "Cosmo Bereitschaft (#{type.name})"
@@ -30,9 +30,9 @@ class Standby
     end
     e
   end
-  
+
   private
-  
+
   def dt(hour)
     DateTime.new(date.year, date.month, date.day, hour, 0, 0)
   end
