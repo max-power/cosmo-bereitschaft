@@ -5,14 +5,18 @@ require "./models/month"
 require "./models/standby"
 
 class StandbyCalendar < Roda
+  opts[:root] = File.dirname(__FILE__)
   plugin :render
   plugin :not_found
+  plugin :public
 
   not_found do
     "Oh, snap!"
   end
 
   route do |r|
+    r.public
+    
     r.root do
       d = Date.today
       r.redirect "/#{d.year}/#{d.month}"
