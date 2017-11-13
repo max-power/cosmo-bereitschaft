@@ -4,11 +4,10 @@
   <a href="<%= @month.next.to_url %>">&rarr;</a>
 </h2>
 
-      
 <form method="post" action="<%= @month.to_url %>">
 
   <table>
-    <% @month.days.each do |date| %>
+    <% @month.each_day do |date| %>
 
     <tr class="wday-<%= date.wday %>">
 
@@ -40,6 +39,12 @@
     <% end %>
 
   </table>
+  
+  
+  <!--
+    Benachritige mich 
+    1 Tag davor um 17:00
+  -->
 
   <button type="submit">Kalender erstellen</button>
 

@@ -1,3 +1,5 @@
+require 'date'
+
 class Month
   attr_reader :year, :month
   
@@ -8,6 +10,10 @@ class Month
 
   def days
     first_day..last_day
+  end
+  
+  def each_day(&block)
+    days.each(&block)
   end
 
   def number_of_days
@@ -31,7 +37,15 @@ class Month
   end
   
   def name
-    "#{month_names[month]} #{year}"
+    "#{month_name} #{year}"
+  end
+  
+  def month_name
+    Date::MONTHNAMES[month]
+  end
+  
+  def day(mday)
+    Date.new(year, month, mday.to_i.clamp(1, number_of_days))
   end
 
   alias_method :begin, :first_day
@@ -50,10 +64,4 @@ class Month
   def ==(other)
     year == other.year && month == other.month
   end
-  
-  private
-  
-  def month_names
-    "Januar Februar März April Mai Juni Juli August September Oktober November Dezember".split(' ').unshift('')
-  end  
 end
