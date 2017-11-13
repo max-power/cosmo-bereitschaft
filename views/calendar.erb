@@ -1,6 +1,6 @@
 <h2>
   <a href="<%= @month.prev.to_url %>">&larr;</a>
-  <%= @month.name %>
+  <span><%= @month.name %></span>
   <a href="<%= @month.next.to_url %>">&rarr;</a>
 </h2>
 
@@ -39,8 +39,7 @@
     <% end %>
 
   </table>
-  
-  
+
   <!--
     Benachritige mich 
     1 Tag davor um 17:00

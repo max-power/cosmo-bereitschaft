@@ -28,24 +28,26 @@
       }
       h2 a {
         display:inline-block;
-        padding: 0 3rem;
         font-weight:normal;
       }
-      
-      
+      h2 span {
+        padding: 0 1.5rem;
+        display:inline-block;
+      }
+
       header, footer, main {
         text-align:center;
       }
       footer {
         padding: 1rem;
       }
-       
+
       main {
         background: #f0f0f0;
         border: solid #333;
         border-width: 3px 0;
       }
-      
+
       table {
         background: #fff;
         border-collapse: collapse;
@@ -80,8 +82,7 @@
       table .wday-0,
       table .wday-6 { background: #f0f0f0; }
       table .wday-0 th { color: #999;}
-      
-      
+
       dl {
         display: inline-block;
         min-width: 100px;
@@ -100,7 +101,6 @@
         content: '';
       }
 
-      
       button {
         padding: 1rem 3rem;
         margin: 2rem 0;
@@ -116,7 +116,7 @@
         color: #fff;
         background-color: #f33;
       }
-      
+
       @media (min-width: 30rem) {
         table {
           width: 30rem;
@@ -129,7 +129,7 @@
     <header>
       <h1>COSMO Bereitschaften</h1>
     </header>
-    
+
     <main>
       <%= yield %>
     </main>
@@ -146,5 +146,6 @@
         <dt>Spät:</dt><dd>13:00 &ndash; 16:00 Uhr</dd>
       </dl>
     </footer>
+
   </body>
 </html>
