@@ -45,7 +45,7 @@ class Month
   end
 
   def day(mday)
-    d = mday.to_i.clamp(1, number_of_days)
+    d = mday.clamp(1, number_of_days)
     Date.new(year, month, d)
   end
 

@@ -32,7 +32,7 @@ class StandbyCalendar < Roda
         calendar.timezone.tzid = "Europe/Berlin"
 
         r['standby'].each do |mday, values|
-          date = @month.day(mday)
+          date = @month.day(mday.to_i)
 
           values.each do |type, _|
             standby = Standby.new(date, type: Standby.const_get(type))
