@@ -18,8 +18,7 @@ class StandbyCalendar < Roda
     r.public
     
     r.root do
-      d = Date.today
-      r.redirect "/#{d.year}/#{d.month}"
+      r.redirect Month.now.next.to_url
     end
 
     r.on Integer, Integer do |year, month|

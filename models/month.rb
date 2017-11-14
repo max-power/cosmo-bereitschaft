@@ -2,6 +2,18 @@ require 'date'
 
 class Month
   attr_reader :year, :month
+  
+  def self.from(obj)
+    if obj.respond_to?(:year) && obj.respond_to?(:month)
+      new(obj.year, obj.month)
+    else
+      raise ArgumentError.new("Argument doesn't respond to 'year' and/or 'month'")
+    end
+  end
+
+  def self.now
+    from Time.now
+  end
 
   def initialize(year, month)
     @year  = Integer(year)
