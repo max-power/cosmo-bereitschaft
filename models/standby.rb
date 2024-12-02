@@ -34,6 +34,6 @@ class Standby
   private
 
   def dt(hour)
-    DateTime.new(date.year, date.month, date.day, hour, 0, 0)
+    Time.new(date.year, date.month, date.day, hour, 0, 0)
   end
 end

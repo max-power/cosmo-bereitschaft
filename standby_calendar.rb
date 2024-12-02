@@ -18,7 +18,7 @@ class StandbyCalendar < Roda
     r.public
     
     r.root do
-      r.redirect Month.now.next.to_url
+      r.redirect Month.now.next.to_path
     end
 
     r.on Integer, Integer do |year, month|
@@ -29,12 +29,12 @@ class StandbyCalendar < Roda
       end
 
       r.post do
-        r.redirect(@month.to_url) unless r['standby']
+        r.redirect(@month.to_url) unless r.params["standby"]
 
         calendar = Icalendar::Calendar.new
         calendar.timezone.tzid = "Europe/Berlin"
 
-        r['standby'].each do |mday, values|
+        r.params["standby"].each do |mday, values|
           date = @month.day(mday.to_i)
 
           values.each do |type, _|
@@ -43,8 +43,8 @@ class StandbyCalendar < Roda
           end
         end
 
-        response['Content-Type'] = 'text/calendar'
-        response['Content-Disposition'] = "inline; filename=cosmo-bereitschaft-#{@month}"
+        response["Content-Type"] = "text/calendar"
+        response["Content-Disposition"] = "inline; filename=cosmo-bereitschaft-#{@month}"
         calendar.to_ical
 
       end

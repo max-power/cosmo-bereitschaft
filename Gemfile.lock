@@ -1,14 +1,21 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    icalendar (2.4.1)
-    puma (3.10.0)
-    rack (2.0.3)
-    roda (3.1.0)
+    icalendar (2.10.3)
+      ice_cube (~> 0.16)
+      ostruct
+    ice_cube (0.17.0)
+    nio4r (2.7.4)
+    ostruct (0.6.1)
+    puma (6.5.0)
+      nio4r (~> 2.0)
+    rack (3.1.8)
+    roda (3.86.0)
       rack
-    tilt (2.0.8)
+    tilt (2.4.0)
 
 PLATFORMS
+  arm64-darwin-24
   ruby
 
 DEPENDENCIES
@@ -18,7 +25,7 @@ DEPENDENCIES
   tilt
 
 RUBY VERSION
-   ruby 2.4.1p111
+   ruby 3.3.5p100
 
 BUNDLED WITH
-   1.16.0
+   2.5.23

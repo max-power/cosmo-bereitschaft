@@ -1,13 +1,13 @@
 require 'date'
 
 class Month
-  attr_reader :year, :month
+  include Comparable
   
   def self.from(obj)
-    if obj.respond_to?(:year) && obj.respond_to?(:month)
-      new(obj.year, obj.month)
+    unless obj.respond_to?(:year) && obj.respond_to?(:month)
+      raise ArgumentError.new("Argument doesn't respond to 'year' or 'month'")
     else
-      raise ArgumentError.new("Argument doesn't respond to 'year' and/or 'month'")
+      new(obj.year, obj.month)
     end
   end
 
@@ -15,17 +15,19 @@ class Month
     from Time.now
   end
 
+  attr_reader :year, :month
+
   def initialize(year, month)
     @year  = Integer(year)
     @month = Integer(month).clamp(1, 12)
   end
-
-  def days
-    first_day..last_day
-  end
   
   def each_day(&block)
     days.each(&block)
+  end
+
+  def days
+    first_day..last_day
   end
 
   def number_of_days
@@ -35,19 +37,23 @@ class Month
   def first_day
     Date.new(year, month, 1)
   end
-
+  
   def last_day
     Date.new(year, month, -1)
   end
 
-  def to_s(sep='-')
-    "#{year}#{sep}#{month}"
+  def day(mday)
+    days.to_a[mday - 1]
   end
 
-  def to_url
-    "/#{to_s('/')}"
+  def succ
+    self.class.from(last_day + 1)
   end
 
+  def pred
+    self.class.from(first_day - 1)
+  end
+  
   def name
     "#{month_name} #{year}"
   end
@@ -55,26 +61,30 @@ class Month
   def month_name
     Date::MONTHNAMES[month]
   end
-
-  def day(mday)
-    d = mday.clamp(1, number_of_days)
-    Date.new(year, month, d)
+  
+  def month_abbr
+    Date::ABBR_MONTHNAMES[month]
+  end
+  
+  def to_s(sep='-')
+    "#{year}#{sep}#{month}"
   end
 
-  alias_method :begin, :first_day
+  def to_path
+    "/#{year}/#{month}"
+  end
+
+  def to_url
+    to_path
+  end
+  
+  def <=>(other)
+    (year <=> other.year).nonzero? || month <=> other.month
+  end
+
+  alias_method :next, :succ
+  alias_method :prev, :pred
   alias_method :end,   :last_day
-
-  def next
-    d = last_day + 1
-    self.class.new(d.year, d.month)
-  end
-
-  def prev
-    d = first_day - 1
-    self.class.new(d.year, d.month)
-  end
-
-  def ==(other)
-    year == other.year && month == other.month
-  end
+  alias_method :begin, :first_day
 end
+
