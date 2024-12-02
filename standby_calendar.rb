@@ -18,7 +18,7 @@ class StandbyCalendar < Roda
     r.public
     
     r.root do
-      r.redirect Month.now.next.to_path
+      r.redirect Month.now.to_path
     end
 
     r.on Integer, Integer do |year, month|
