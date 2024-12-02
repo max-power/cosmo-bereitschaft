@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    base64 (0.2.0)
     icalendar (2.10.3)
       ice_cube (~> 0.16)
       ostruct
@@ -20,6 +21,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  base64
   icalendar
   logger
   puma
